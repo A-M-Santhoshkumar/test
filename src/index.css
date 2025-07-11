@@ -1,68 +1,145 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  p {
+    @apply text-base text-gray-600 font-openSans;
   }
-  a:hover {
-    color: #747bff;
+
+  h1 {
+    @apply text-4xl text-dark font-syne;
   }
-  button {
-    background-color: #f9f9f9;
+
+  h2 {
+    @apply text-3xl text-dark font-syne;
   }
+
+  h3 {
+    @apply text-2xl text-dark font-syne;
+  }
+
+  h4 {
+    @apply text-xl text-dark font-syne;
+  }
+
+  h5 {
+    @apply text-lg text-dark font-syne;
+  }
+
+  h6 {
+    @apply text-base text-dark font-syne;
+  }
+}
+
+@layer components {
+  .theme-sk-btn::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px;
+    background-image: linear-gradient(329deg, #FF91FA 13.55%, #FA6490 48.54%, #F7D86A 86.44%);
+    transform: translate(8px, 8px);
+    transition: transform 0.2s ease-out;
+    z-index: -1;
+  }
+
+  .theme-sk-btn:hover::after {
+    transform: translate(0, 0);
+  }
+
+  .theme-sk-btn:hover .theme-sk-arrow {
+    transform: translateX(8px);
+  }
+
+  .theme-sk-arrow {
+        transform: translate(5px, 0px);
+   
+    transition: transform 0.2s ease-out;
+  }
+}
+
+
+
+@layer utilities {
+  .before-hero-gradient::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    margin-right: 0.5rem;
+    background-image: linear-gradient(329deg, #FF91FA 13.55%, #FA6490 48.54%, #F7D86A 86.44%);
+    vertical-align: middle;
+  }
+}
+
+
+/* index.css or globals.css */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSansItalic';
+  src: url('/fonts/Open_Sans/OpenSans-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Syne';
+  src: url('/fonts/Syne/Syne-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* Initial states */
+.animation-move {
+  transform: translate(0, 0);
+  transition: transform 0.2s ease-out;
+}
+
+.animation-bg-move {
+  transform: translate(0, 0);
+  transition: transform 0.2s ease-out;
+  background-image: linear-gradient(329deg, #FF91FA 13.55%, #FA6490 48.54%, #F7D86A 86.44%);
+  border-radius: 0.5rem;
+}
+
+/* Hover parent triggers both */
+.group:hover .animation-move {
+  transform: translate(0, -20px);
+}
+
+.group:hover .animation-bg-move {
+  transform: translate(0, -20px);
+}
+
+.icons-fotter-bg:hover,.icons-fotter:hover{
+background-color:#03041C;
+color: white;
+}
+
+/*  backgroud image*/
+.contact__shape-1 {
+position: absolute;
+    left: 15%;
+    top: 12%;
+    display: inline-block;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-image: -webkit-linear-gradient(329deg, rgba(255, 145, 250, 0.1) 13.55%, rgba(250, 100, 144, 0.1) 48.54%, rgba(247, 216, 106, 0.1) 86.44%);
 }
